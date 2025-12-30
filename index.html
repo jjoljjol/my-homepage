@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Premium Homepage</title>
+    <meta name="description" content="A stunning and modern premium homepage tailored for excellence.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <header id="main-header">
+        <nav>
+            <div class="logo">HEAVENLY TECH</div>
+            <ul>
+                <li><a href="#hero">Overview</a></li>
+                <li><a href="#spheres">Spheres</a></li>
+                <li><a href="#projects">Insights</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-bg-container">
+                <img src="hero-bg.png" alt="Heavenly Tech Lab" class="hero-bg-image" id="hero-image">
+            </div>
+            <div class="hero-content">
+                <h1 id="hero-title">Heavenly Innovations</h1>
+                <p id="hero-subtitle">Exploring the frontier of Robotics, Food Tech, and AI with an ethereal touch.
+                    Bridging extreme technology with the warmth of the human soul.</p>
+                <div class="cta-group">
+                    <a href="#spheres" class="btn primary">Explore Spheres</a>
+                    <a href="#contact" class="btn secondary">Connect</a>
+                </div>
+            </div>
+        </section>
+        <section id="spheres" class="vision-section">
+            <div class="container">
+                <h2 class="section-title">Spheres of Innovation</h2>
+                <div class="vision-grid">
+                    <div class="vision-card">
+                        <div class="icon">🤖</div>
+                        <h3>Celestial Robotics</h3>
+                        <p>Automation with a gentle, precise touch. Building the hands that will safely shape our
+                            future.</p>
+                    </div>
+                    <div class="vision-card">
+                        <div class="icon">🥗</div>
+                        <h3>Vital Alchemy</h3>
+                        <p>Revolutionizing food tech and material science. Synthesizing nature's purity through advanced
+                            engineering.</p>
+                    </div>
+                    <div class="vision-card">
+                        <div class="icon">🧠</div>
+                        <h3>Ethereal Intelligence</h3>
+                        <p>AI that transcends mere data. Intelligent systems integrated seamlessly into the warmth of
+                            daily life.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="idea-archive">
+            <div class="container">
+                <div class="archive-header">
+                    <h2 class="section-title">Latest Insights</h2>
+                    <button id="open-form-btn" class="btn secondary">Share an Insight</button>
+                </div>
+
+                <!-- Post Submission Form -->
+                <div id="post-form-container" class="form-overlay hidden">
+                    <div class="post-form-card">
+                        <button id="close-form-btn" class="close-btn">&times;</button>
+                        <h3>Share Your Insight</h3>
+                        <form id="insight-form">
+                            <input type="text" id="post-title" placeholder="Title" required>
+                            <select id="post-category">
+                                <option value="Robotics">Robotics</option>
+                                <option value="Food Tech">Food Tech</option>
+                                <option value="AI">AI</option>
+                            </select>
+                            <textarea id="post-content" placeholder="Ethereal thoughts and technical notes..." rows="6"
+                                required></textarea>
+                            <button type="submit" class="btn primary">Publish Insight</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="archive-list" id="insight-archive">
+                    <!-- Dynamic posts will be rendered here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="contact-card">
+                    <h2>Innovate with Us</h2>
+                    <p>Have a vision for robotics, food tech, or AI? Let's start a professional conversation.</p>
+                    <form id="contact-form">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" rows="4" required></textarea>
+                        <button type="submit" class="btn primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="main-footer">
+        <p>&copy; 2024 My Premium Homepage. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
