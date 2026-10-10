@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>마감 보관함 · JjolJjoli 창업지원사업 DB</title>
+<meta name="description" content="마감된 창업지원사업 보관함. 다음 공고를 준비할 때 참고하세요.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body data-mode="archive" data-base="../">
+<header class="wrap top">
+  <div>
+    <h1>마감 <span>보관함</span></h1>
+    <p class="sub">마감된 사업은 이곳으로 옮겨집니다 · <a href="../">← 진행 중인 사업</a></p>
+  </div>
+  <div class="stats" id="stats" aria-live="polite"></div>
+</header>
+
+<main class="wrap">
+  <section class="controls" aria-label="필터와 검색">
+    <label class="search">
+      <span class="sr">사업 검색</span>
+      <input id="q" type="search" placeholder="검색: 부산, 창업패키지 …" autocomplete="off">
+    </label>
+    <div class="chips" id="chips-region" role="group" aria-label="지역"></div>
+    <div class="chips" id="chips-category" role="group" aria-label="카테고리"></div>
+    <label class="toggle"><input id="verified" type="checkbox"> 공고 원문 확인된 사업만</label>
+    <p class="legend">✔ 공고 원문과 대조 완료 · 🕒 확인 후 30일 경과 · ⚠ 아직 대조 전. 마감된 사업의 내용은 다음 공고에서 달라질 수 있습니다.</p>
+  </section>
+
+  <section aria-label="마감된 사업">
+    <div class="list" id="list"></div>
+    <p class="empty" id="empty" hidden>보관된 사업이 없습니다.</p>
+    <p class="empty" id="error" hidden>데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>데이터 내려받기: <a href="startup_db.json" download>JSON</a></p>
+</footer>
+
+<dialog id="modal" aria-labelledby="m-title">
+  <div class="m-head">
+    <span class="badge" id="m-badge"></span>
+    <button class="m-close" id="m-close" type="button" aria-label="닫기">✕</button>
+  </div>
+  <h2 id="m-title"></h2>
+  <dl class="m-body" id="m-body"></dl>
+  <div class="m-actions">
+    <a class="btn" id="m-link" target="_blank" rel="noopener noreferrer">기관 사이트 ↗</a>
+    <a class="btn ghost" id="m-report" target="_blank" rel="noopener noreferrer">정정 제보</a>
+  </div>
+</dialog>
+
+<noscript><p class="wrap">이 페이지는 JavaScript가 필요합니다.</p></noscript>
+<script src="../script.js" defer></script>
+</body>
+</html>

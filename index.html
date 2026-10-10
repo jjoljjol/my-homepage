@@ -1,192 +1,69 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>JjolJjoli - 2026 창업지원사업 통합 DB (라이트)</title>
-<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<style>
-:root{
---bg:#fdfaf5;
---bg2:#f7f2eb;
---card:#ffffff;
---card2:#fdf8f0;
---line:#ece6dc;
---line2:#f0e9de;
---text:#2d2a26;
---muted:#8a847d;
---accent:#5b5bd6;
---accent2:#0e9f7a;
---accent-bg:#eef0ff;
---accent2-bg:#e6f7f1;
---warn:#b7791f;
---warn-bg:#fff8e1;
---red:#c53030;
---red-bg:#fff0f0;
---shadow:0 2px 12px rgba(45,42,38,0.06),0 1px 3px rgba(45,42,38,0.04);
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Pretendard,system-ui,-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
-header{max-width:1240px;margin:0 auto;padding:28px 20px 16px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--line)}
-h1{margin:0;font-size:26px;letter-spacing:-.03em;font-weight:700} h1 span{color:var(--accent)}
-.sub{color:var(--muted);font-size:13px;margin-top:6px;line-height:1.5}
-.nav{display:flex;gap:8px;flex-wrap:wrap}
-.nav a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:12px;color:var(--muted);box-shadow:var(--shadow)}
-.grid{max-width:1240px;margin:0 auto;padding:18px 20px 60px;display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-.card{grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
-.span3{grid-column:span 3}.span4{grid-column:span 4}.span6{grid-column:span 6}.span8{grid-column:span 8}.span9{grid-column:span 9}
-@media(max-width:900px){.span3,.span4,.span6,.span8,.span9{grid-column:span 12}}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.kpi{background:var(--card2);border:1px solid var(--line2);border-radius:14px;padding:14px}
-.kpi b{font-size:21px;display:block;font-family:JetBrains Mono;color:var(--text)} .kpi i{font-style:normal;color:var(--muted);font-size:11px;display:block;margin-top:2px;line-height:1.4}
-.table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
-.table th{text-align:left;color:var(--muted);font-weight:600;padding:8px 8px;border-bottom:1px solid var(--line);font-size:11px;letter-spacing:.05em;text-transform:uppercase;background:#fcf9f4}
-.table td{padding:10px 8px;border-bottom:1px solid #f2ece2;vertical-align:top}
-.badge{display:inline-flex;align-items:center;padding:4px 9px;border-radius:999px;font-size:11px;border:1px solid var(--line);font-family:JetBrains Mono;background:#fff}
-.badge.green{background:var(--accent2-bg);color:var(--accent2);border-color:#bfe9d9}
-.badge.purple{background:var(--accent-bg);color:var(--accent);border-color:#d0d3ff}
-.badge.red{background:var(--red-bg);color:var(--red);border-color:#ffd0d0}
-.badge.yellow{background:var(--warn-bg);color:var(--warn);border-color:#ffe7a6}
-.badge.closed{background:#f1eee8;color:#8a847d;border-color:#e2dccf}
-.filter{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
-.filter button{padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:12px;cursor:pointer;box-shadow:var(--shadow)}
-.filter button.active{background:var(--text);color:#fff;border-color:var(--text)}
-.code{background:#fbf8f3;border:1px solid var(--line);border-radius:12px;padding:12px;font-family:JetBrains Mono;font-size:11.5px;color:#6b665f;overflow:auto;line-height:1.5}
-h3{margin:4px 0 10px;font-size:14px;font-weight:700;letter-spacing:-.01em}
-.small{font-size:11.5px;color:var(--muted);line-height:1.6}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JjolJjoli 창업지원사업 DB</title>
+<meta name="description" content="마감일 순으로 정리한 창업지원사업. 지역과 카테고리로 필터하고 검색하세요.">
+<meta property="og:title" content="JjolJjoli 창업지원사업 DB">
+<meta property="og:description" content="마감일 순으로 정리한 창업지원사업. 공고 원문 확인 상태를 함께 표시합니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
-<body>
-<header>
-<div>
-<h1>JjolJjoli <span>Startup DB 2026</span> — Light Pastel</h1>
-<div class="sub">3조 4,645억원 · 111개 기관 508개 사업 · 융자 41.1% / 기술개발 25% / 사업화 23.5%<br/>창원 D-2 · 대전 D-3 · 초격차 D-19 — 동양인 시력 맞춤 라이트/파스텔 톤, GitHub Pages Ready</div>
-</div>
-<div class="nav">
-<a href="#dashboard">대시보드</a>
-<a href="#central">중앙부처</a>
-<a href="#local">지자체</a>
-<a href="#transfer">이전·세제</a>
-<a href="#templates">템플릿</a>
-</div>
+<body data-mode="active" data-base="">
+<header class="wrap top">
+  <div>
+    <h1>JjolJjoli <span>창업지원사업 DB</span></h1>
+    <p class="sub">마감일 순으로 정리한 창업지원사업 · <a href="archive/">지난 마감 보관함 →</a></p>
+  </div>
+  <div class="stats" id="stats" aria-live="polite"></div>
 </header>
 
-<div class="grid">
-<div class="card span9" id="dashboard">
-<div class="kpis">
-<div class="kpi"><b>3.4조</b><i>2026 통합공고 예산<br/>중기부 93.9% · 508개</i></div>
-<div class="kpi"><b>508</b><i>사업수 · 111개 기관<br/>전년 +79개</i></div>
-<div class="kpi"><b>200억</b><i>지방투자촉진보조금<br/>건당 150억</i></div>
-<div class="kpi"><b>5년 100%</b><i>기회발전특구 법인세<br/>취득세 100%</i></div>
-</div>
-<div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
-<span class="badge purple">SEDNA / 정부지원사업_사업계획서</span>
-<span class="badge green">춘천 vs 서울 리포트 기반</span>
-<span class="badge yellow">Light Pastel · 눈 피로 0</span>
-</div>
-</div>
-<div class="card span3">
-<h3>바로 쓰기</h3>
-<div class="small">라이트 테마로 교체 완료. 이 파일을 그대로 <code>index.html</code>로 커밋하세요. 배경 #fdfaf5, 카드 #ffffff, 라인 #ece6dc — 인쇄해도 깨끗합니다.</div>
-<div class="code" style="margin-top:10px">/data/startup_db.json<br/>/data/startup_db.csv<br/>/_posts/2026-10-10-startup-db.md</div>
-</div>
+<main class="wrap">
+  <section id="urgent-sec" aria-labelledby="urgent-h" hidden>
+    <h2 id="urgent-h">🔥 마감 임박</h2>
+    <div class="urgent" id="urgent"></div>
+  </section>
 
-<div class="card span8">
-<h3>🔥 마감 캘린더 — D-Day (파스텔 강조)</h3>
-<table class="table">
-<thead><tr><th>D-Day</th><th>마감일</th><th>사업명</th><th>지역</th><th>카테고리</th><th>혜택</th></tr></thead>
-<tbody>
-<tr><td><span class="badge dday red" data-deadline="2026-10-12">D-2</span></td><td>2026-10-12</td><td>창원시 소상공인 경영환경 개선</td><td>경남 창원</td><td><span class="badge">공간</span></td><td>시설개선 200만 (70%)</td></tr>
-<tr><td><span class="badge dday green" data-deadline="2026-10-13">D-3</span></td><td>2026-10-13</td><td>대전 웰컴 스테이</td><td>대전</td><td><span class="badge green">이전지원</span></td><td>체류비+공간 200만</td></tr>
-<tr><td><span class="badge dday purple" data-deadline="2026-10-29">D-19</span></td><td>2026-10-29</td><td>초격차 스타트업</td><td>전국</td><td><span class="badge purple">특화</span></td><td>2억 + R&D 3년 12억</td></tr>
-<tr><td><span class="badge yellow">상시</span></td><td>상시</td><td>지방투자촉진보조금</td><td>전국→지방</td><td>이전</td><td>건당 150억 / 기업당 200억</td></tr>
-<tr><td><span class="badge yellow">상시</span></td><td>상시</td><td>기회발전특구 창업</td><td>특구 55곳</td><td>세제</td><td>법인세 5년100% + 취득세100%</td></tr>
-</tbody>
-</table>
-<p class="small">* 다크 대비 명도 대비 4.5:1 이상 유지, 파스텔 배경으로 장시간 독서 피로 최소화</p>
-</div>
+  <section class="controls" aria-label="필터와 검색">
+    <label class="search">
+      <span class="sr">사업 검색</span>
+      <input id="q" type="search" placeholder="검색: 창원, 세제, 200만 …" autocomplete="off">
+    </label>
+    <div class="chips" id="chips-region" role="group" aria-label="지역"></div>
+    <div class="chips" id="chips-category" role="group" aria-label="카테고리"></div>
+    <label class="toggle"><input id="verified" type="checkbox"> 공고 원문 확인된 사업만</label>
+    <p class="legend">✔ 공고 원문과 대조 완료 · 🕒 확인 후 30일 경과 · ⚠ 아직 대조 전. 신청 전에는 반드시 기관 공고를 직접 확인하세요.</p>
+  </section>
 
-<div class="card span4">
-<h3>📦 다운로드</h3>
-<table class="table">
-<tr><td>엑셀 통합 DB (6탭)</td><td><span class="badge green">라이트용</span></td></tr>
-<tr><td>startup_db.json</td><td>data 폴더</td></tr>
-<tr><td>startup_db.csv</td><td>시트 업로드</td></tr>
-</table>
-<div class="code" style="margin-top:12px">:root{<br/>&nbsp; --bg:#fdfaf5; /* 따뜻한 종이 */<br/>&nbsp; --card:#ffffff;<br/>&nbsp; --line:#ece6dc;<br/>&nbsp; --text:#2d2a26;<br/>}</div>
-<p class="small" style="margin-top:8px">기존 다크 #0f1221 → 라이트 #fdfaf5로 변경. 눈부심 방지 위해 순백 대신 웜화이트 사용.</p>
-</div>
+  <section aria-label="사업 목록">
+    <div class="list" id="list"></div>
+    <p class="empty" id="empty" hidden>조건에 맞는 사업이 없습니다.</p>
+    <p class="empty" id="error" hidden>데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>
+  </section>
+</main>
 
-<div class="card span6" id="central">
-<h3>중앙부처 8대 유형 (융자 41.1%)</h3>
-<table class="table">
-<thead><tr><th>유형</th><th>대표</th><th>규모</th></tr></thead>
-<tbody>
-<tr><td>사업화</td><td>예비/초기/도약/초격차</td><td>0.4억~3억, 초격차 12억</td></tr>
-<tr><td>기술개발</td><td>TIPS·디딤돌</td><td>5억+ (지방 40% 쿼터)</td></tr>
-<tr><td>융자·보증</td><td>2026 보증 신설</td><td>최대 3억</td></tr>
-<tr><td>시설·공간</td><td>창업중심대학 9개교</td><td>예비1억/도약3억</td></tr>
-</tbody>
-</table>
-</div>
+<footer class="wrap foot">
+  <p>데이터 내려받기: <a href="data/startup_db.json" download>JSON</a> · <a href="data/startup_db.csv" download>CSV</a></p>
+</footer>
 
-<div class="card span6" id="transfer">
-<h3>이전·세제·정주 — 블로그 킬러 3종</h3>
-<table class="table">
-<thead><tr><th>제도</th><th>혜택</th><th>카피</th></tr></thead>
-<tbody>
-<tr><td>지방투자보조금</td><td>200억</td><td><b>수도권 0원 vs 지방 200억 현금</b></td></tr>
-<tr><td>기회발전특구</td><td>법인세 5년0원</td><td>서울 1.6억 vs 지방 0원</td></tr>
-<tr><td>지방우대 3종</td><td>소득세 90% 10년 + 월50만 비과세</td><td>서울5년 vs 지방10년</td></tr>
-</tbody>
-</table>
-</div>
+<dialog id="modal" aria-labelledby="m-title">
+  <div class="m-head">
+    <span class="badge" id="m-badge"></span>
+    <button class="m-close" id="m-close" type="button" aria-label="닫기">✕</button>
+  </div>
+  <h2 id="m-title"></h2>
+  <dl class="m-body" id="m-body"></dl>
+  <div class="m-actions">
+    <a class="btn" id="m-link" target="_blank" rel="noopener noreferrer">기관 사이트 ↗</a>
+    <a class="btn ghost" id="m-report" target="_blank" rel="noopener noreferrer">정정 제보</a>
+  </div>
+</dialog>
 
-<div class="card span12" id="local">
-<h3>지자체 특화 — 경남 197억 전국 2위</h3>
-<table class="table">
-<thead><tr><th>광역</th><th>예산</th><th>핵심사업</th><th>혜택</th><th>마감</th></tr></thead>
-<tbody>
-<tr><td>서울</td><td>390억</td><td>서울형 TIPS</td><td>최대 4억</td><td>상시 (경쟁 25:1)</td></tr>
-<tr><td>부산</td><td>113억</td><td>부니콘 10개사</td><td>5000만~1억</td><td>2026-03-23</td></tr>
-<tr><td>경남</td><td>197억</td><td>자원연계형 로컬 + 초격차 10개사</td><td>1500만 / 12억</td><td>04-10 / 06-10</td></tr>
-<tr><td>대전</td><td>123억</td><td>웰컴스테이</td><td>200만</td><td>D-3</td></tr>
-<tr><td>춘천</td><td>-</td><td>만45세 청년·GMP 300종</td><td>평당1~3만</td><td>상시</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="card span12" id="templates">
-<h3>📝 블로그 포스팅 템플릿 (라이트 테마용)</h3>
-<table class="table">
-<thead><tr><th>구분</th><th>제목 예시</th><th>구조</th></tr></thead>
-<tbody>
-<tr><td>자금형</td><td>[2026] 예비창업패키지 4000만 — 자부담 0% 공략</td><td>대상→금액→꿀팁→마감</td></tr>
-<tr><td>이전형</td><td>서울 법인세 50% vs 지방 0% — 1.6억 아끼는 법</td><td>중과→특구→200억 계산</td></tr>
-<tr><td>지자체형</td><td>부산 부니콘 10개사 비밀</td><td>브랜드→기업→준비법</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="card span12" style="text-align:center;background:var(--card2)">
-<p class="small">Light Pastel v1 · Warm White #fdfaf5 · Line #ece6dc · Text #2d2a26 — 동양인 저대비 시력 보호 최적화 · 인쇄 시 잉크 70% 절감</p>
-</div>
-
-</div>
-<script>
-/* D-Day auto-calc (KST). Rule: <=7 days red, <=14 yellow, else purple; past = "마감". */
-(function(){
-  var k=new Date(Date.now()+9*3600000);
-  var today=Date.UTC(k.getUTCFullYear(),k.getUTCMonth(),k.getUTCDate());
-  document.querySelectorAll('.dday[data-deadline]').forEach(function(el){
-    var p=el.getAttribute('data-deadline').split('-');
-    var diff=Math.round((Date.UTC(+p[0],+p[1]-1,+p[2])-today)/86400000);
-    el.classList.remove('red','green','purple','yellow','closed');
-    if(diff<0){el.textContent='마감';el.classList.add('closed');}
-    else{el.textContent=diff===0?'D-Day':'D-'+diff;el.classList.add(diff<=7?'red':diff<=14?'yellow':'purple');}
-  });
-})();
-</script>
+<noscript><p class="wrap">이 페이지는 JavaScript가 필요합니다.</p></noscript>
+<script src="script.js" defer></script>
 </body>
 </html>
