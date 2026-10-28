@@ -22,10 +22,10 @@
             <div class="logo">혜안OS <span class="logo-dim">/ HUB</span></div>
             <ul>
                 <li><a href="#hero">Overview</a></li>
-                <li><a href="#spheres">Spheres</a></li>
-                <li><a href="#hub">Hub</a></li>
-                <li><a href="#projects">Insights</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#novel">Novel</a></li>
+                <li><a href="#insight">Insight</a></li>
+                <li><a href="#study">Study</a></li>
+                <li><a href="#freeboard">Freeboard</a></li>
             </ul>
         </nav>
     </header>
@@ -72,23 +72,44 @@
             </div>
         </section>
 
-        <section id="hub" class="hub-section">
+        <section id="novel" class="hub-section">
             <div class="container">
-                <h2 class="section-title">혜안OS 통합 피드</h2>
-                <p class="section-subtitle">예측(Predict)·만화(Comic)·소설(Novel)·리포트(Research)가 자동 생성되는 대로 이곳에
-                    모입니다. 지금은 프론트엔드 자리표시 데이터이며, 백엔드 API 연동 후 실시간 피드로 교체됩니다.</p>
-                <div class="hub-filters" id="hub-filters">
-                    <button class="hub-filter active" data-filter="all">All</button>
-                    <button class="hub-filter" data-filter="predict">Predictions</button>
-                    <button class="hub-filter" data-filter="comic">Comics</button>
-                    <button class="hub-filter" data-filter="novel">Novels</button>
-                    <button class="hub-filter" data-filter="research">Reports</button>
+                <h2 class="section-title">Novel</h2>
+                <p class="section-subtitle">혜안OS가 생성한 소설과 연재 작품을 모아봅니다.</p>
+                <div class="hub-filters" id="hub-filters-novel">
+                    <button class="hub-filter active" data-filter="all" data-section="novel">All</button>
+                    <button class="hub-filter" data-filter="novel" data-section="novel">Novels</button>
                 </div>
-                <div class="hub-grid" id="hub-grid"></div>
+                <div class="hub-grid" id="hub-grid-novel"></div>
             </div>
         </section>
 
-        <section id="projects" class="idea-archive">
+        <section id="insight" class="hub-section">
+            <div class="container">
+                <h2 class="section-title">Insight</h2>
+                <p class="section-subtitle">예측(Predict)과 리포트(Research)를 통한 통찰과 인사이트를 공유합니다.</p>
+                <div class="hub-filters" id="hub-filters-insight">
+                    <button class="hub-filter active" data-filter="all" data-section="insight">All</button>
+                    <button class="hub-filter" data-filter="predict" data-section="insight">Predictions</button>
+                    <button class="hub-filter" data-filter="research" data-section="insight">Reports</button>
+                </div>
+                <div class="hub-grid" id="hub-grid-insight"></div>
+            </div>
+        </section>
+
+        <section id="study" class="hub-section">
+            <div class="container">
+                <h2 class="section-title">Study</h2>
+                <p class="section-subtitle">학습 자료와 연구 내용을 정리한 스터디 아카이브입니다.</p>
+                <div class="hub-filters" id="hub-filters-study">
+                    <button class="hub-filter active" data-filter="all" data-section="study">All</button>
+                    <button class="hub-filter" data-filter="research" data-section="study">Research</button>
+                </div>
+                <div class="hub-grid" id="hub-grid-study"></div>
+            </div>
+        </section>
+
+        <section id="freeboard" class="idea-archive">
             <div class="container">
                 <div class="archive-header">
                     <h2 class="section-title">Latest Insights</h2>

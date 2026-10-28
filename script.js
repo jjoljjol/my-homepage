@@ -3,12 +3,10 @@ const cursor = document.getElementById('cursor-glow');
 const heroImage = document.getElementById('hero-image');
 
 document.addEventListener('mousemove', (e) => {
-    // Update cursor position
     if (cursor) {
         cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
     }
 
-    // Hero image parallax effect
     const moveX = (window.innerWidth / 2 - e.clientX) * 0.02;
     const moveY = (window.innerHeight / 2 - e.clientY) * 0.02;
 
@@ -36,10 +34,7 @@ document.querySelectorAll('nav a').forEach(anchor => {
     });
 });
 
-// --- 혜안OS 통합 피드 ---
-const hubGrid = document.getElementById('hub-grid');
-const hubFilters = document.getElementById('hub-filters');
-
+// --- Hub Content Loading ---
 const hubTypeLabels = {
     prediction: 'Predict',
     predict: 'Predict',
@@ -58,31 +53,38 @@ const hubTypeClasses = {
     post: 'post',
 };
 
-async function loadHubContent(filter = 'all') {
-    if (!hubGrid) return;
-    
-    hubGrid.innerHTML = '<p class="hub-empty">불러오는 중...</p>';
-    
+async function loadSectionContent(section, filter = 'all') {
+    const gridId = `hub-grid-${section}`;
+    const grid = document.getElementById(gridId);
+    if (!grid) return;
+
+    grid.innerHTML = '<p class="hub-empty">불러오는 중...</p>';
+
     try {
-        // Try to fetch from main app API
-        const res = await fetch('http://localhost:4200/api/hub/content?limit=20');
+        const res = await fetch('http://localhost:4200/api/hub/content?limit=30');
         if (res.ok) {
             const data = await res.json();
             let items = data.items || [];
-            
-            if (filter !== 'all') {
-                // Map filter names
-                const filterMap = { predict: 'prediction', comic: 'comic', novel: 'novel', research: 'research' };
-                const targetType = filterMap[filter] || filter;
-                items = items.filter((item) => item.type === targetType);
+
+            // Filter by section
+            if (section === 'novel') {
+                items = items.filter((item) => item.type === 'novel');
+            } else if (section === 'insight') {
+                items = items.filter((item) => item.type === 'prediction' || item.type === 'research');
+                if (filter !== 'all') {
+                    const targetType = filter === 'predict' ? 'prediction' : filter;
+                    items = items.filter((item) => item.type === targetType);
+                }
+            } else if (section === 'study') {
+                items = items.filter((item) => item.type === 'research');
             }
-            
+
             if (items.length === 0) {
-                hubGrid.innerHTML = '<p class="hub-empty">아직 이 타입의 콘텐츠가 없습니다.</p>';
+                grid.innerHTML = '<p class="hub-empty">아직 콘텐츠가 없습니다.</p>';
                 return;
             }
-            
-            hubGrid.innerHTML = items.map((item) => {
+
+            grid.innerHTML = items.map((item) => {
                 const type = item.type === 'prediction' ? 'predict' : item.type;
                 return `
                 <article class="hub-card">
@@ -96,44 +98,28 @@ async function loadHubContent(filter = 'all') {
             return;
         }
     } catch (e) {
-        console.log('API fetch failed, using mock data');
+        console.log('API fetch failed');
     }
-    
-    // Fallback to mock data
-    const hubItems = [
-        { type: 'predict', title: '2027년 반도체 지정학 시나리오', summary: 'HyeanOS 예측 엔진이 생성한 공급망 재편 전망.', meta: '예측 · 10월 27일' },
-        { type: 'comic', title: '100 Times AI — 드로잉 연연 #12', summary: '만화 자동생성 파이프라인의 최신 회차.', meta: '만화 · 10월 26일' },
-        { type: 'novel', title: '밤의 서고, 네 번째 장', summary: 'AI 작가 스튜디오에서 집필 중인 연재 소설 발췌.', meta: '소설 · 10월 25일' },
-        { type: 'research', title: '배양육 산업 10년 전망 리포트', summary: '시장 데이터와 기술 로드맵을 종합한 분석 리포트.', meta: '리포트 · 10월 24일' },
-    ];
-    
-    const items = filter === 'all' ? hubItems : hubItems.filter((item) => item.type === filter);
-    if (items.length === 0) {
-        hubGrid.innerHTML = '<p class="hub-empty">아직 이 타입의 콘텐츠가 없습니다.</p>';
-        return;
-    }
-    hubGrid.innerHTML = items.map((item) => `
-        <article class="hub-card">
-            <span class="hub-type ${item.type}">${hubTypeLabels[item.type]}</span>
-            <h4>${item.title}</h4>
-            <p>${item.summary}</p>
-            <span class="hub-meta">${item.meta}</span>
-        </article>
-    `).join('');
+
+    grid.innerHTML = '<p class="hub-empty">콘텐츠를 불러올 수 없습니다.</p>';
 }
 
-if (hubGrid && hubFilters) {
-    hubFilters.addEventListener('click', (e) => {
-        const button = e.target.closest('.hub-filter');
-        if (!button) return;
-        hubFilters.querySelectorAll('.hub-filter').forEach((btn) => btn.classList.remove('active'));
-        button.classList.add('active');
-        loadHubContent(button.dataset.filter);
-    });
-    loadHubContent('all');
-}
+// Setup filters for each section
+['novel', 'insight', 'study'].forEach(section => {
+    const filters = document.getElementById(`hub-filters-${section}`);
+    if (filters) {
+        filters.addEventListener('click', (e) => {
+            const button = e.target.closest('.hub-filter');
+            if (!button) return;
+            filters.querySelectorAll('.hub-filter').forEach((btn) => btn.classList.remove('active'));
+            button.classList.add('active');
+            loadSectionContent(section, button.dataset.filter || 'all');
+        });
+        loadSectionContent(section, 'all');
+    }
+});
 
-// --- Insight Board Logic ---
+// --- Freeboard (Insight Board) Logic ---
 const insightArchive = document.getElementById('insight-archive');
 const postFormContainer = document.getElementById('post-form-container');
 const openFormBtn = document.getElementById('open-form-btn');
