@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Premium Homepage</title>
-    <meta name="description" content="A stunning and modern premium homepage tailored for excellence.">
+    <title>혜안OS · Heavenly Innovations Hub</title>
+    <meta name="description" content="혜안OS 기반 통합 콘텐츠 허브 — 예측, 만화, 소설, 리포트를 하나의 타임라인으로.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap"
         rel="stylesheet">
 </head>
 
@@ -19,10 +19,11 @@
 
     <header id="main-header">
         <nav>
-            <div class="logo">HEAVENLY TECH</div>
+            <div class="logo">혜안OS <span class="logo-dim">/ HUB</span></div>
             <ul>
                 <li><a href="#hero">Overview</a></li>
                 <li><a href="#spheres">Spheres</a></li>
+                <li><a href="#hub">Hub</a></li>
                 <li><a href="#projects">Insights</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -35,11 +36,12 @@
                 <img src="hero-bg.png" alt="Heavenly Tech Lab" class="hero-bg-image" id="hero-image">
             </div>
             <div class="hero-content">
+                <span class="hero-eyebrow">혜안OS 통합 콘텐츠 허브</span>
                 <h1 id="hero-title">Heavenly Innovations</h1>
                 <p id="hero-subtitle">Exploring the frontier of Robotics, Food Tech, and AI with an ethereal touch.
-                    Bridging extreme technology with the warmth of the human soul.</p>
+                    예측·만화·소설·리포트를 하나의 타임라인으로 통합합니다.</p>
                 <div class="cta-group">
-                    <a href="#spheres" class="btn primary">Explore Spheres</a>
+                    <a href="#hub" class="btn primary">Enter the Hub</a>
                     <a href="#contact" class="btn secondary">Connect</a>
                 </div>
             </div>
@@ -48,25 +50,41 @@
             <div class="container">
                 <h2 class="section-title">Spheres of Innovation</h2>
                 <div class="vision-grid">
-                    <div class="vision-card">
+                    <div class="vision-card c-robotics">
                         <div class="icon">🤖</div>
                         <h3>Celestial Robotics</h3>
                         <p>Automation with a gentle, precise touch. Building the hands that will safely shape our
                             future.</p>
                     </div>
-                    <div class="vision-card">
+                    <div class="vision-card c-food">
                         <div class="icon">🥗</div>
                         <h3>Vital Alchemy</h3>
                         <p>Revolutionizing food tech and material science. Synthesizing nature's purity through advanced
                             engineering.</p>
                     </div>
-                    <div class="vision-card">
+                    <div class="vision-card c-ai">
                         <div class="icon">🧠</div>
                         <h3>Ethereal Intelligence</h3>
                         <p>AI that transcends mere data. Intelligent systems integrated seamlessly into the warmth of
                             daily life.</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="hub" class="hub-section">
+            <div class="container">
+                <h2 class="section-title">혜안OS 통합 피드</h2>
+                <p class="section-subtitle">예측(Predict)·만화(Comic)·소설(Novel)·리포트(Research)가 자동 생성되는 대로 이곳에
+                    모입니다. 지금은 프론트엔드 자리표시 데이터이며, 백엔드 API 연동 후 실시간 피드로 교체됩니다.</p>
+                <div class="hub-filters" id="hub-filters">
+                    <button class="hub-filter active" data-filter="all">All</button>
+                    <button class="hub-filter" data-filter="predict">Predictions</button>
+                    <button class="hub-filter" data-filter="comic">Comics</button>
+                    <button class="hub-filter" data-filter="novel">Novels</button>
+                    <button class="hub-filter" data-filter="research">Reports</button>
+                </div>
+                <div class="hub-grid" id="hub-grid"></div>
             </div>
         </section>
 
@@ -119,7 +137,7 @@
     </main>
 
     <footer id="main-footer">
-        <p>&copy; 2024 My Premium Homepage. All rights reserved.</p>
+        <p>&copy; 2026 혜안OS Hub · Heavenly Innovations. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
